@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Cardiology Risk Prediction</h2>
+        <form action="/predict" method="post">
+            <!-- Replace 'feature1', 'feature2', etc. with actual feature names -->
+            <label for="age">Age:</label>
+            <input type="number" step="any" name="age" id="age" required>
+
+            <label for="gender">Gender (1 for Male, 2 for Female):</label>
+            <input type="number" step="1" name="gender" id="gender" required>
+
+            <label for="height">Height:</label>
+            <input type="number" step="any" name="height" id="height" required>
+
+            <label for="weight">Weight:</label>
+            <input type="number" step="any" name="weight" id="weight" required>
+
+            <!-- Add more fields as needed -->
+
+            <!-- New fields for additional features -->
+            <label for="ap_hi">Systolic Blood Pressure (ap_hi):</label>
+            <input type="number" step="any" name="ap_hi" id="ap_hi" required>
+
+            <label for="ap_lo">Diastolic Blood Pressure (ap_lo):</label>
+            <input type="number" step="any" name="ap_lo" id="ap_lo" required>
+
+            <label for="cholesterol">Cholesterol Level:</label>
+            <input type="number" step="any" name="cholesterol" id="cholesterol" required>
+
+            <label for="gluc">Glucose Level:</label>
+            <input type="number" step="any" name="gluc" id="gluc" required>
+
+            <label for="smoke">Smoking Status (1 for Yes, 0 for No):</label>
+            <input type="number" step="1" name="smoke" id="smoke" min="0" max="1" required>
+
+            <label for="alco">Alcohol Intake (1 for Yes, 0 for No):</label>
+            <input type="number" step="1" name="alco" id="alco" min="0" max="1" required>
+
+            <label for="active">Physical Activity (1 for Active, 0 for Inactive):</label>
+            <input type="number" step="1" name="active" id="active" min="0" max="1" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <div class="result">
+                <h3>{{ prediction_text }}</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
